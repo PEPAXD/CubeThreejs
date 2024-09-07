@@ -29,7 +29,35 @@ body {
   min-height: 100vh;
 }
 
-.App {
-  text-align: center;
-  width: 70%;
+main {
+  display: flex;
+  place-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+
+  background: #192239;
+  --gap: 6em;
+  --line: 1px;
+  --color: rgba(255, 255, 255, 0.3);
+
+  background-image: linear-gradient(
+      -90deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    );
+  background-size: var(--gap) var(--gap);
 }
