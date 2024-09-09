@@ -1,15 +1,17 @@
 import * as THREE from "three";
 
+// Crear una escena, una cámara y un renderizador
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
+
+
+const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+camera.position.set( 0, 0, 100 );
+camera.lookAt( 0, 0, 0 );
 
 const renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setAnimationLoop(animate);
+
+
 
 // Selecciona el div con el id "3DCubeHere" y agrega el renderizador a él
 const cubeContainer = document.getElementById("3DCubeHere");
@@ -18,6 +20,7 @@ cubeContainer.appendChild(renderer.domElement);
 // Ajusta el tamaño del renderizador al tamaño del contenedor
 resizeRendererToDisplaySize();
 
+// Crea la geometría del cubo y el material
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
 const cube = new THREE.Mesh(geometry, material);
@@ -30,7 +33,8 @@ const line = new THREE.LineSegments(edges, lineMaterial);
 scene.add(line);
 
 // Acerca la cámara al cubo
-camera.position.z = 2;
+camera.position.z = 4;
+
 
 function resizeRendererToDisplaySize() {
   const width = cubeContainer.clientWidth;
@@ -40,6 +44,7 @@ function resizeRendererToDisplaySize() {
   camera.updateProjectionMatrix();
 }
 
+// renderiza la escena
 function animate() {
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
